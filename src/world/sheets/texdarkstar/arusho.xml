@@ -1,0 +1,75 @@
+<TravellerCharacterSheet>
+   <name>Arusho</name>
+   <UPP>7D7A67</UPP>
+   <Strength>7</Strength>
+   <Dexterity>13</Dexterity>
+   <Endurance>7</Endurance>
+   <Intelligence>10</Intelligence>
+   <Education>6</Education>
+   <SocialStanding>7</SocialStanding>
+   <race>vargr</race>
+   <terms>4</terms>
+   <homeworld>Plains</homeworld>
+   <debt>0</debt>
+   <money>0</money>
+   <contacts>0</contacts>
+   <enemies>0</enemies>
+   <allies>4</allies>
+   <rivals>0</rivals>
+   <careers>
+      <career>
+         <description>DrifterScavenger</description>
+         <numberOfTerms>2</numberOfTerms>
+         <rank title="">2</rank>
+         <contacts>0</contacts>
+         <enemies>0</enemies>
+         <rivals>0</rivals>
+         <allies>0</allies>
+         <events>
+            <event>*Gained Survival* </event>
+            <event>You have something older than the imperium, or even something older than humanity.</event>
+            <event>*Gained Survival* </event>
+            <event>Something happened to you, but you do not know what it was.</event>
+            <event>Decided to leave career.</event>
+         </events>
+      </career>
+      <career>
+         <description>MarineStarmarine</description>
+         <numberOfTerms>2</numberOfTerms>
+         <rank title="">2</rank>
+         <contacts>0</contacts>
+         <enemies>0</enemies>
+         <rivals>0</rivals>
+         <allies>1</allies>
+         <events>
+            <event>*Gained Dexterity* </event>
+            <event>You are given advanced training in a specialist field, but you failed the exams.</event>
+            <event>*Gained Melee*</event>
+            <event>A mission goes disasterously wrong due to your commanding officer's error or incompetence. You chose not to backstab him and gained an ally.</event>
+            <event>Decided to leave career.</event>
+         </events>
+      </career>
+    </careers>
+   <items>
+         <item origin="DrifterScavenger">Ally</item>
+         <item origin="DrifterScavenger">Ally</item>
+         <item origin="DrifterScavenger">Ally</item>
+         <item origin="MarineStarmarine">Intelligence</item>
+         <item origin="MarineStarmarine">Intelligence</item>
+         <item origin="MarineStarmarine">Intelligence</item>
+   </items>
+   <skills>
+      <skill name="Athletics" rank="0"/>
+      <skill name="GunCombatPistols" rank="2"/>
+      <skill name="Language" rank="0"/>
+      <skill name="Leadership" rank="3"/>
+      <skill name="MeleeBlade" rank="1"/>
+      <skill name="MeleeNatural" rank="1"/>
+      <skill name="Recon" rank="1"/>
+      <skill name="Stealth" rank="2"/>
+      <skill name="Streetwise" rank="2"/>
+      <skill name="Survival" rank="1"/>
+      <skill name="VaccSuit" rank="0"/>
+      <skill name="Zero-G" rank="0"/>
+   </skills>
+</TravellerCharacterSheet>

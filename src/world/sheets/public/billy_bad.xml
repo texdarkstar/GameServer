@@ -1,0 +1,85 @@
+<TravellerCharacterSheet>
+   <name>BILLY BAD</name>
+   <UPP>BFB949</UPP>
+   <Strength>11</Strength>
+   <Dexterity>15</Dexterity>
+   <Endurance>11</Endurance>
+   <Intelligence>9</Intelligence>
+   <Education>4</Education>
+   <SocialStanding>9</SocialStanding>
+   <race>human</race>
+   <terms>6</terms>
+   <homeworld>Low Tech</homeworld>
+   <debt>0</debt>
+   <money>0</money>
+   <contacts>0</contacts>
+   <enemies>2</enemies>
+   <allies>1</allies>
+   <rivals>0</rivals>
+   <careers>
+      <career>
+         <description>RogueEnforcer</description>
+         <numberOfTerms>5</numberOfTerms>
+         <rank title="">5</rank>
+         <contacts>0</contacts>
+         <enemies>2</enemies>
+         <rivals>0</rivals>
+         <allies>1</allies>
+         <events>
+            <event>*Gained Dexterity* </event>
+            <event>Betrayed by a friend. One of your Contacts or Allies betrays you, ending your career. That Contact or Ally became an enemy.</event>
+            <event>*Gained Gun_Combat* </event>
+            <event>One of your crimes pays off. Gain a +2 DM to any one Benefit roll, and gain your victim as an Enemy.</event>
+            <event>*Gained Dexterity* </event>
+            <event>You become involved in a feud with a rival criminal organisation. You used Gun_Combat and were injured.</event>
+            <event>*Gained Endurance* </event>
+            <event>Something good happens to the character; he comes into money unexpectedly, has a lifelong dream come true, gets a book published or has some other stroke of good fortune. Gain a +2 DM to any one Benefit roll from his current career.</event>
+            <event>*Gained Athletics* </event>
+            <event>You have the opportunity to backstab a fellow rogue for personal gain. You refuse and gained him as an ally.</event>
+            <event>Decided to leave career.</event>
+         </events>
+      </career>
+      <career>
+         <description>DrifterWanderer</description>
+         <numberOfTerms>1</numberOfTerms>
+         <rank title="">1</rank>
+         <contacts>0</contacts>
+         <enemies>0</enemies>
+         <rivals>0</rivals>
+         <allies>0</allies>
+         <events>
+            <event>*Gained Athletics* </event>
+            <event>Life on the edge honed your Gun_Combat_shotgun ability.</event>
+            <event>Decided to leave career.</event>
+         </events>
+      </career>
+    </careers>
+   <items>
+         <item origin="RogueEnforcer">OneShipShare</item>
+         <item origin="RogueEnforcer">Weapon</item>
+         <item origin="RogueEnforcer">TwoShipShares</item>
+         <item origin="RogueEnforcer">Armor</item>
+         <item origin="RogueEnforcer">Corsair</item>
+         <item origin="DrifterWanderer">Contact</item>
+         <item origin="DrifterWanderer">Weapon</item>
+         <item origin="DrifterWanderer">Ally</item>
+         <item origin="DrifterWanderer">Weapon</item>
+         <item origin="DrifterWanderer">OneShipShare</item>
+         <item origin="DrifterWanderer">TwoShipShares</item>
+   </items>
+   <skills>
+      <skill name="Admin" rank="0"/>
+      <skill name="Survival" rank="0"/>
+      <skill name="Deception" rank="0"/>
+      <skill name="Recon" rank="0"/>
+      <skill name="Athletics" rank="0"/>
+      <skill name="GunCombat" rank="0"/>
+      <skill name="Stealth" rank="0"/>
+      <skill name="Streetwise" rank="1"/>
+      <skill name="Persuade" rank="1"/>
+      <skill name="GunCombat Shotgun" rank="2"/>
+      <skill name="Melee" rank="0"/>
+      <skill name="MeleeUnarmedCombat" rank="1"/>
+      <skill name="AthleticsCoordination" rank="2"/>
+   </skills>
+</TravellerCharacterSheet>

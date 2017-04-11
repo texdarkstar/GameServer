@@ -1,0 +1,118 @@
+<TravellerCharacterSheet>
+   <name>LENNY KOMARA</name>
+   <UPP>8A9A73</UPP>
+   <Strength>8</Strength>
+   <Dexterity>10</Dexterity>
+   <Endurance>9</Endurance>
+   <Intelligence>10</Intelligence>
+   <Education>7</Education>
+   <SocialStanding>3</SocialStanding>
+   <race>human</race>
+   <terms>4</terms>
+   <homeworld>High Technology, Asteroid</homeworld>
+   <debt>0</debt>
+   <money>0</money>
+   <contacts>1</contacts>
+   <enemies>0</enemies>
+   <allies>0</allies>
+   <rivals>0</rivals>
+   <careers>
+      <career>
+         <description>DrifterWanderer</description>
+         <numberOfTerms>1</numberOfTerms>
+         <rank title="">0</rank>
+         <contacts>0</contacts>
+         <enemies>0</enemies>
+         <rivals>0</rivals>
+         <allies>0</allies>
+         <events>
+            <event>*Gained Endurance* </event>
+            <event>You don’t know what happened to you. There is a gap in your memory.</event>
+            <event>A mishap forced you out of this career.</event>
+         </events>
+      </career>
+      <career>
+         <description>ArmyInfantry</description>
+         <numberOfTerms>1</numberOfTerms>
+         <rank title="Private">0</rank>
+         <contacts>0</contacts>
+         <enemies>0</enemies>
+         <rivals>0</rivals>
+         <allies>0</allies>
+         <events>
+            <event>Decided to take the draft. You joined up as ArmyInfantry</event>
+            <event>*Gained Athletics* </event>
+            <event>Injured</event>
+            <event>A mishap forced you out of this career.</event>
+         </events>
+      </career>
+      <career>
+         <description>DrifterBarbarian</description>
+         <numberOfTerms>1</numberOfTerms>
+         <rank title="">0</rank>
+         <contacts>0</contacts>
+         <enemies>0</enemies>
+         <rivals>0</rivals>
+         <allies>0</allies>
+         <events>
+            <event>*Gained Stealth* </event>
+            <event>You don’t know what happened to you. There is a gap in your memory.</event>
+            <event>A mishap forced you out of this career.</event>
+         </events>
+      </career>
+      <career>
+         <description>DrifterWanderer</description>
+         <numberOfTerms>1</numberOfTerms>
+         <rank title="">1</rank>
+         <contacts>1</contacts>
+         <enemies>0</enemies>
+         <rivals>0</rivals>
+         <allies>0</allies>
+         <events>
+            <event>*Gained Endurance* </event>
+            <event>A romantic relationship involving the character ends. Badly.</event>
+            <event>Decided to leave career.</event>
+            <event>Gained contact from spending time in career</event>
+         </events>
+      </career>
+   </careers>
+   <items>
+         <item origin="DrifterWanderer">Contact</item>
+         <item origin="DrifterWanderer">Weapon</item>
+         <item origin="DrifterWanderer">Ally</item>
+         <item origin="DrifterWanderer">Weapon</item>
+         <item origin="DrifterWanderer">OneShipShare</item>
+         <item origin="DrifterWanderer">TwoShipShares</item>
+         <item origin="ArmyInfantry">Combat_Implant</item>
+         <item origin="ArmyInfantry">Weapon</item>
+         <item origin="ArmyInfantry">Armor</item>
+         <item origin="DrifterBarbarian">Contact</item>
+         <item origin="DrifterBarbarian">Weapon</item>
+         <item origin="DrifterBarbarian">Ally</item>
+         <item origin="DrifterBarbarian">Weapon</item>
+         <item origin="DrifterBarbarian">OneShipShare</item>
+         <item origin="DrifterBarbarian">TwoShipShares</item>
+         <item origin="DrifterWanderer">Contact</item>
+         <item origin="DrifterWanderer">Weapon</item>
+         <item origin="DrifterWanderer">Ally</item>
+         <item origin="DrifterWanderer">Weapon</item>
+         <item origin="DrifterWanderer">OneShipShare</item>
+         <item origin="DrifterWanderer">TwoShipShares</item>
+   </items>
+   <skills>
+      <skill name="Carouse" rank="0"/>
+      <skill name="Computers" rank="0"/>
+      <skill name="ZeroG" rank="0"/>
+      <skill name="Athletics" rank="0"/>
+      <skill name="Deception" rank="0"/>
+      <skill name="Recon" rank="0"/>
+      <skill name="Stealth" rank="2"/>
+      <skill name="Streetwise" rank="1"/>
+      <skill name="Survival" rank="0"/>
+      <skill name="GunCombat" rank="0"/>
+      <skill name="GunCombat EnergyRifle" rank="1"/>
+      <skill name="Athletics Coordination" rank="1"/>
+      <skill name="Melee Blade" rank="1"/>
+      <skill name="Melee" rank="0"/>
+   </skills>
+</TravellerCharacterSheet>

@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block sidebar %}
+{% endblock %}
+
+{% block header_ext %}
+{% endblock %}
+
+{% block content %}
+<div class="rowOfBoxes">
+   <!--div class="twoThirds noBorderOnLeft"-->
+   <div class="noBorderOnLeft">
+      <h1>Welcome!</h1>
+      <p>Welcome to GameServer, where we serve you <a href="https://en.wikipedia.org/wiki/Role-playing_game#Tabletop" target="_blank">RPG games</a>,
+        one byte at a time!<br>
+        Todays flavor: <a href="https://en.wikipedia.org/wiki/Traveller_(role-playing_game)" target="_blank">Traveller.</a><br><br>
+        </p>
+        <h2>Connection Settings:</h2>
+          <ul>
+            <li>host: gmsworld.ddns.net</li><br>
+            <li>port: 5331</li>
+          </ul>
+        <h3>This is still in active development. If you feel like contributing, the github repository is located <a href="https://github.com/texdarkstar/GameServer" target="_blank">here.</a></h3>
+   </div>
+</div>
+
+<div class="rowOfBoxes dividingBorderAbove">
+
+   <div class="quarter noBorderOnLeft">
+      <h1>Players</h1>
+      <p>
+      There's currently <strong>{{num_players_connected}}</strong> connected out of a total of <strong>{{num_players_registered}}</strong> players registered. Of these, <strong>{{num_players_registered_recent}}</strong> were created this week, and <strong>{{num_players_connected_recent}}</strong> have connected within the last seven days.
+      </p>
+   </div>
+
+   <div class="quarter">
+      <h1>Recently Connected</h1>
+      <ul>
+      {% for player in players_connected_recent %}
+      <li>{{player.username}} -- <em>{{player.last_login|timesince}} ago</em></li>
+      {% endfor %}
+      </ul>
+      <p class="filler"><!-- Filler para to extend left vertical line --></p>
+   </div>
+
+   <div class="quarter">
+      <h1>Database Stats</h1>
+      <ul>
+      <li>{{num_players_registered}} players (+ {{num_characters}} characters)</li>
+      <li>{{num_rooms}} rooms (+ {{num_exits}} exits)</li>
+      <li>{{num_others}} other objects</li>
+
+      </ul>
+   </div>
+
+   <div class="quarter">
+      <h1>Evennia</h1>
+      <p><a href="http://evennia.com">Evennia</a> is an open-source MUD server built in
+      <a href="http://python.org">Python</a>, on top of the
+      <a href="http://twistedmatrix.com">Twisted</a> and
+      <a href="http://djangoproject.com">Django</a> frameworks. This
+      combination of technologies allows for the quick and easy creation
+      of the game of your dreams - as simple or as complex as you like.</p>
+   </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,95 @@
+<TravellerCharacterSheet>
+   <name>Nicole</name>
+   <UPP>78B89A</UPP>
+   <Strength>7</Strength>
+   <Dexterity>8</Dexterity>
+   <Endurance>B</Endurance>
+   <Intelligence>8</Intelligence>
+   <Education>9</Education>
+   <SocialStanding>A</SocialStanding>
+   <race>human</race>
+   <terms>4</terms>
+   <homeworld>Plains</homeworld>
+   <debt>0</debt>
+   <money>0</money>
+   <contacts>1</contacts>
+   <enemies>1</enemies>
+   <allies>1</allies>
+   <rivals>1</rivals>
+   <careers>
+      <career>
+         <description>Journalist</description>
+         <numberOfTerms>1</numberOfTerms>
+         <rank title="">1</rank>
+         <contacts>0</contacts>
+         <enemies>0</enemies>
+         <rivals>1</rivals>
+         <allies>0</allies>
+         <events>
+            <event>Got fired\Gained rival</event>
+         </events>
+      </career>
+      <career>
+         <description>Scavenger</description>
+         <numberOfTerms>1</numberOfTerms>
+         <rank title="">1</rank>
+         <contacts>1</contacts>
+         <enemies>1</enemies>
+         <rivals>0</rivals>
+         <allies>0</allies>
+         <events>
+            <event>Lived on the edge/got archery</event>
+            <event>Betrayed\gained enemy</event>
+         </events>
+      </career>
+        <career>
+         <description>Scout</description>
+         <numberOfTerms>1</numberOfTerms>
+         <rank title="">1</rank>
+         <contacts>0</contacts>
+         <enemies>0</enemies>
+         <rivals>0</rivals>
+         <allies>0</allies>
+         <events>
+            <event>Performed service\gained +1DM for advancement</event>
+         </events>
+        </career>
+        <career>
+         <description>Entertainer</description>
+         <numberOfTerms>1</numberOfTerms>
+         <rank title="">1</rank>
+         <contacts>0</contacts>
+         <enemies>0</enemies>
+         <rivals>0</rivals>
+         <allies>1</allies>
+         <events>
+            <event>Gained a patron\+2DM for advancement</event>
+         </events>
+        </career>
+    </careers>
+   <items>
+      <item origin="Journalist">Rival</item>
+      <item origin="Scavenger">Enemy</item>
+      <item origin="Scout">Weapon</item>
+      <item origin="Unknown">Sporting Bow</item>
+   </items>
+   <skills>
+      <skill name="AnimalsFarming" rank="0"/>
+      <skill name="AthleticsArchery" rank="2"/>
+      <skill name="ArtActing" rank="1"/>
+      <skill name="ArtDancing" rank="1"/>
+      <skill name="ArtWriting" rank="2"/>
+      <skill name="Astrogation" rank="1"/>
+      <skill name="Carouse" rank="2"/>
+      <skill name="Computers" rank="1"/>
+      <skill name="Deception" rank="3"/>
+      <skill name="LifeSciencesCybernetics" rank="1"/>
+      <skill name="MeleeBlade" rank="1"/>
+      <skill name="Persuade" rank="1"/>
+      <skill name="PilotSpaceCraft" rank="1"/>
+      <skill name="SocialSciencesHistory" rank="0"/>
+      <skill name="Stealth" rank="1"/>
+      <skill name="Steward" rank="1"/>
+      <skill name="VaccSuit" rank="1"/>
+   </skills>
+</TravellerCharacterSheet>

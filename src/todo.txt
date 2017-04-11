@@ -1,0 +1,25 @@
+new todo:
+    need to put this into the repo
+
+    commands:
+        @assign
+        finger/whois
+        order
+        perform
+        roll
+        sheet
+        stat
+        award
+
+    npc will be special mobs that do nothing at all, but a controller can user "order" to have it do stuff,
+        which is basically a specialized version of @force, which targets players, not mobs.
+
+    stat <character/mob>
+    order <mob> <action>
+    finger <player>
+    whois <player>
+    perform <stat> + <skill>
+    roll <number>D<sides> <+/-><dm>
+
+    @assign <sheet> <player>
+    award <boon/bane> <player>
