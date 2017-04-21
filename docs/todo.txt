@@ -1,0 +1,54 @@
+todo
+    equipment
+        make Nicolas catalog all CSC items.... Mwahahahahahauahaha
+
+        armor (durability ratings or something? Doesn't make sense for it to be invincible. This needs to confer with the core rules too.)
+        guns/knives/weapons (recoil, auto, special mods like laser sights, gyros, etc.)
+        misc gear (Probably have no use at all, just tokens or something (Ohh! I have a hand computer!)
+        credit/money/bank accounts/augrams/silgrams (use multiple currencies?)
+
+    npcs
+        npc will be special mud mobiles that do nothing at all, but a controller can use @puppet or something to temporarily pupppet an npc.
+        maybe the name of the npc they are managing can show in their prompt
+
+    combat handler
+    enviroment handler
+    skills/attributes
+    color says
+
+    commands
+        @assign
+        finger/whois
+        order
+        perform
+        sheet
+        stat
+        award
+        config
+
+
+    stat <character/mob>
+    order <mob> <action>
+    finger <player>
+    whois <player>  # an alias of finger
+    perform <stat> + <skill>
+    perform <stat>
+    roll <number>D<sides> <+/-><dm>
+
+    @assign <sheet> <player>
+    award <boon/bane> <player>
+    config <setting>
+
+    config will allow a player to toggle some settings, such as:
+        dot commands: prefix all commands with a dot (.), any non command is sent as a chat message (on/off)
+        prompt: display a prompt (on/off)
+        autospend: automatically spend boon dice when possible. No effect on bane dice, as they are already spent automatically (on/off)
+
+
+    if I come up with any more I'll write them down here.
+
+
+    calenders
+    financial log
+    ship manifest (cargo, load-out, stats, etc.)
+    discuss this all with Dad/Nicolas

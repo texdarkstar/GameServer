@@ -68,4 +68,4 @@ INSTALLED_APPS += (
 # Django's cookies. Do not share this with anyone. Changing it will
 # log out all active web browsing sessions. Game web client sessions
 # may survive.
-SECRET_KEY = open(os.getcwd() + "{sep}server{sep}conf{sep}key.secret".format(sep=os.sep), 'r').read()  # not included in the repo
+SECRET_KEY = 'ergQzy-t$4U(|vxPh!<DST_ckmZ=G&"Yo+C.FRn/'
