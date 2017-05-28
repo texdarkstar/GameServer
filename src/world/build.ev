@@ -1,0 +1,25 @@
+The Game Room(#2)
+You are huddled around a large wooden table with a few other players.
+Looking at the bottom you see that quite a few people have signed it.
+
+A wooden table(#5)
+This table has a few signatures on it. *coughcough read help sign *cough*.
+
+# making blank character to have django web help app work
+@create anonymous : typeclasses.characters.Character
+# teleporting it to None
+@teleport/tonone anonymous
+# creating signing table
+@create/drop A wooden table
+# describing the table
+@desc table = This table has a few signatures on it. *coughcough* read help sign *cough*.
+# making it signable
+@set table/signable = True
+
+# renaming Limbo
+@name #2 = The Game Room
+# describing The Game Room
+@desc #2 = You are huddled around a large wooden table with a few other players.
+Looking at the bottom you see that quite a few people have signed it.
+# finally, signing the table
+sign table Texdarkstar was here.
