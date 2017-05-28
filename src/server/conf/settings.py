@@ -64,6 +64,9 @@ DEFAULT_CHANNELS = [
 INSTALLED_APPS += (
         "web.help_system",
 )
+INSTALLED_APPS += (
+        "web.client_index",
+)
 
 # The secret key is randomly seeded upon creation. It is used to sign
 # Django's cookies. Do not share this with anyone. Changing it will
