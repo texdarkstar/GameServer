@@ -32,6 +32,7 @@ import os
 # This is the name of your game. Make it catchy!
 SERVERNAME = "GameServer"
 TELNET_PORTS = [5331]
+WEBSERVER_PORTS = [(80, 5001)]
 WEBSOCKET_CLIENT_ENABLED = True  # for now
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
