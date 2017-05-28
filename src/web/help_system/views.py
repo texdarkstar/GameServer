@@ -9,10 +9,14 @@ from world.cull_colors import cull_colors as cull
 def index(request):
     """The 'index' view."""
     user = request.user
+
     if not user.is_anonymous() and user.character:
         character = user.character
     else:
-        character = Character.objects.get(db_key="anonymous")
+        try:
+            character = Character.objects.get(id=user.id)
+        except:
+            character = Character.objects.get(db_key="anonymous")
 
     # Get the categories and topics accessible to this character
     categories, topics = _get_topics(character)
