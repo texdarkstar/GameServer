@@ -67,6 +67,9 @@ INSTALLED_APPS += (
 INSTALLED_APPS += (
         "web.client_index",
 )
+INSTALLED_APPS += (
+        "web.plugin_index",
+)
 
 # The secret key is randomly seeded upon creation. It is used to sign
 # Django's cookies. Do not share this with anyone. Changing it will

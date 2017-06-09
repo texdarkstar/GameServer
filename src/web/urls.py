@@ -5,6 +5,7 @@ help.
 
 """
 from django.conf.urls import url, include
+from django.views.generic import RedirectView
 
 # default evennia patterns
 from evennia.web.urls import urlpatterns
@@ -13,6 +14,10 @@ from evennia.web.urls import urlpatterns
 custom_patterns = [
     url(r'^help/', include('web.help_system.urls', namespace='help_system', app_name='help_system')),
     url(r'^clients/', include('web.client_index.urls', namespace='client_index', app_name='client_index')),
+    url(r'^plugins/', include('web.plugin_index.urls', namespace='plugin_index', app_name='plugin_index')),
+
+# resources
+    url(r'^plugins/GameServer\_command\_plugin\.zip$',  RedirectView.as_view(url='/media/download/GameServer_command_plugin.zip', permanent=False))
 ]
 
 # this is required by Django.
