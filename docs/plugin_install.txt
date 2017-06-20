@@ -1,0 +1,15 @@
+Step one:
+    Go to the plugins page and download your plugin.
+
+Step two:
+    Open your world file in mush, by clicking File --> Open World or CTRL-O.
+
+Step three:
+    Open the plugins window with by clicking File --> Plugins... or CTRL-SHIFT-P.
+
+Step four:
+    Click add, and change directory to where you downloaded the plugin xml file.
+    Select it and click Open.
+
+That's it!
+You can select the plugin you just installed and click Remove if you want it gone.

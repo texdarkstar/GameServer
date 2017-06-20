@@ -57,6 +57,7 @@ class PlayerCmdSet(default_cmds.PlayerCmdSet):
         # any commands you add below will overload the default ones.
         #
         self.add(CmdForce())
+        self.add(CmdAward())
 
 
 class UnloggedinCmdSet(default_cmds.UnloggedinCmdSet):
