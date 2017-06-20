@@ -12,7 +12,11 @@ class CmdAward(Command):
 
 
     def func(self):
-        target, _type = self.args.strip().split()
+        try:
+            target, _type = self.args.strip().split()
+        except ValueError:
+            self.caller.msg("Syntax: @award <player> <boon/bane>")
+            return
 
         if target.lower() in ["me", "self"]:
             target = self.caller.name
