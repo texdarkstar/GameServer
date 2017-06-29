@@ -97,6 +97,7 @@ class CmdInflict(Command):
             target.db.attrs['dex']['current'] = cdex
 
             self.caller.msg("Okay, inflicted %d damage to %s." % (_damage, target.name))
+            target.msg("%s inflicted %d damage to you." % (self.caller.name, _damage))
             return
 
         elif target and not target.player:
@@ -186,6 +187,7 @@ class CmdUninflict(Command):
             target.db.attrs['dex']['current'] = cdex
 
             self.caller.msg("Okay, healed %d damage from %s." % (_damage, target.name))
+            target.msg("%s healed %d damage from you." % (self.caller.name, _damage))
             return
 
         elif target and not target.player:
