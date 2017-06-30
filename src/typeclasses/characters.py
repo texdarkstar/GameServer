@@ -35,12 +35,12 @@ class Character(DefaultCharacter):
         self.db.race = 'human'
         self.db.gender = ''
         self.db.attrs = {}
-        self.db.attrs['str'] = 7
-        self.db.attrs['dex'] = 7
-        self.db.attrs['end'] = 7
-        self.db.attrs['int'] = 7
-        self.db.attrs['edu'] = 7
-        self.db.attrs['soc'] = 7
+        self.db.attrs['str'] = {"current": 7, "base": 7}
+        self.db.attrs['dex'] = {"current": 7, "base": 7}
+        self.db.attrs['end'] = {"current": 7, "base": 7}
+        self.db.attrs['int'] = {"current": 7, "base": 7}
+        self.db.attrs['edu'] = {"current": 7, "base": 7}
+        self.db.attrs['soc'] = {"current": 7, "base": 7}
 
         self.db.skills = {}
         self.db.boon_dice = 0

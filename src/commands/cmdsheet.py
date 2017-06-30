@@ -3,7 +3,8 @@ from command import Command
 
 class CmdSheet(Command):
     """Syntax: sheet <skills/score>
-        Shows you sections of your sheet."""
+        Shows you sections of your sheet.
+        Default with no arguments is score."""
     key = "sheet"
     aliases = []
     locks = "cmd:all()"
@@ -28,4 +29,10 @@ class CmdSheet(Command):
 
 
         elif arg == "skills":
-            pass
+            for skill in self.caller.db.skills.keys():
+                string += "{skill}: {rank}\n".format(skill=skill, rank=self.caller.db.skills[skill])
+
+            self.caller.msg(string)
+
+        else:
+            self.caller.msg("Unknown field '%s'." % arg)
