@@ -4,3 +4,4 @@ from cmdsign import *
 from cmdaward import *
 from cmdinflict import *
 from cmdsheet import *
+from cmdskill import *

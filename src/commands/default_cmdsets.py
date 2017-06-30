@@ -61,6 +61,7 @@ class PlayerCmdSet(default_cmds.PlayerCmdSet):
         self.add(CmdInflict())
         self.add(CmdUninflict())
         self.add(CmdSheet())
+        self.add(CmdSkill())
 
 
 class UnloggedinCmdSet(default_cmds.UnloggedinCmdSet):
