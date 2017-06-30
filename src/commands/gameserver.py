@@ -3,3 +3,4 @@ from cmdroll import *
 from cmdsign import *
 from cmdaward import *
 from cmdinflict import *
+from cmdsheet import *

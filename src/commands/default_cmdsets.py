@@ -60,6 +60,8 @@ class PlayerCmdSet(default_cmds.PlayerCmdSet):
         self.add(CmdAward())
         self.add(CmdInflict())
         self.add(CmdUninflict())
+        self.add(CmdSheet())
+
 
 class UnloggedinCmdSet(default_cmds.UnloggedinCmdSet):
     """
