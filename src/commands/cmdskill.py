@@ -25,7 +25,11 @@ class CmdSkill(Command):
     def func(self):
         args = self.args.strip().lower().split()
         try:
-            action, rank, skillname, who = args
+            action = args[0]
+            rank = args[1]
+            skillname = ' '.join(args[2:-1])
+            who = args[-1]
+
             rank = int(rank)
             if rank < 0:
                 self.caller.msg("Rank must be a postive integer.")
