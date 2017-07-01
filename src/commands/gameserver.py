@@ -5,3 +5,4 @@ from cmdaward import *
 from cmdinflict import *
 from cmdsheet import *
 from cmdskill import *
+from cmdperform import *
