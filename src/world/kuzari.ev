@@ -1,0 +1,62 @@
+@skill add 0 animals(farming) kuzari
+#
+@skill add 0 animals(riding) kuzari
+#
+@skill add 0 animals(training) kuzari
+#
+@skill add 0 animals(veterinary) kuzari
+#
+@skill add 2 astrogation kuzari
+#
+@skill add 2 broker kuzari
+#
+@skill add 1 computers kuzari
+#
+@skill add 1 athletics(coordination) kuzari
+#
+@skill add 0 engineer(electronics) kuzari
+#
+@skill add 3 engineer(j-drive) kuzari
+#
+@skill add 1 engineer(life support) kuzari
+#
+@skill add 2 engineer(m-drive) kuzari
+#
+@skill add 0 engineer(power plant) kuzari
+#
+@skill add 0 gambler kuzari
+#
+@skill add 1 gun combat(pistol) kuzari
+#
+@skill add 1 gun combat(rifle) kuzari
+#
+@skill add 0 gun combat(shotgun) kuzari
+#
+@skill add 1 jack of all trades kuzari
+#
+@skill add 1 mechanic kuzari
+#
+@skill add 0 melee(blade) kuzari
+#
+@skill add 1 melee(bludgeon) kuzari
+#
+@skill add 1 melee(natural weapons) kuzari
+#
+@skill add 0 melee(unarmed combat) kuzari
+#
+@skill add 0 physical science(chemistry) kuzari
+#
+@skill add 0 physical science(electronic) kuzari
+#
+@skill add 1 physical science(physics) kuzari
+#
+@skill add 1 recon kuzari
+#
+@skill add 1 sensors kuzari
+#
+@skill add 2 stealth kuzari
+#
+@skill add 1 vacc suit kuzari
+#
+@skill add 2 zero-g kuzari
+#
