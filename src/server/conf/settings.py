@@ -33,7 +33,7 @@ import os
 SERVERNAME = "GameServer"
 TELNET_PORTS = [5331]
 WEBSERVER_PORTS = [(80, 5001)]
-WEBSOCKET_CLIENT_ENABLED = False  # for now
+WEBCLIENT_ENABLED = False  # for now
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 # SEARCH_MULTIMATCH_REGEX = r"(?P<number>[0-9]+)-(?P<name>.*)"
