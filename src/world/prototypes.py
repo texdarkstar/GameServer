@@ -35,6 +35,8 @@ Possible keywords are:
 See the `@spawn` command and `evennia.utils.spawner` for more info.
 
 """
+from world.weapons import *
+from world.armors import *
 
 #from random import randint
 #
@@ -71,3 +73,4 @@ See the `@spawn` command and `evennia.utils.spawner` for more info.
 # "key": "goblin archwizard",
 # "prototype" : ("GOBLIN_WIZARD", "ARCHWIZARD_MIXIN")
 #}
+
