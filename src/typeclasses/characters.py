@@ -46,7 +46,10 @@ class Character(DefaultCharacter):
         self.db.boon_dice = 0
         self.db.bane_dice = 0
         self.db.config = {}
-        self.db.GM = False
+        self.db.gm = False
+        self.db.equipment = {
+            'torso': '',
+            }
 
 
     def calculate(self):
