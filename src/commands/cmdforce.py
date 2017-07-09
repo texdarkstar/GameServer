@@ -28,13 +28,7 @@ class CmdForce(Command):
         if target and target.player:
             self.caller.msg("You force {name} to '{action}'.".format(name=target.name, action=action))
             target.msg("{name} forces you to '{action}'.".format(name=self.caller.name, action=action))
-            try:
-                target.execute_cmd(action, session=target.player.sessions.get()[0])
-            except Exception as exc:
-                self.caller.msg(str(exc))
-                return
-            return
-
+            target.execute_cmd(action, session=target.player.sessions.get()[0])
 
         else:
             self.caller.msg("No such player connected.")
