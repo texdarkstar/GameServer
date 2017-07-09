@@ -25,6 +25,4 @@ def dm_attr(attr):
     elif attr < 0:
         attr = 0
 
-    print str(attr) + ": " + str(attributes[attr])
-
     return attributes[attr]

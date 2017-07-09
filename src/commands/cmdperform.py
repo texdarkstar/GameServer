@@ -38,13 +38,20 @@ class CmdPerform(Command):
 
         if re.match(regexp1, args):  # checking for something like 'perform str'
             m = re.match(regexp1, args)
-            string = "You rolled a |c{result}|n: dice rolled[|c{die1}|n, |c{die2}|n] {pm}{attr}[|c{attrdm}|n]"
+            string = "You rolled a |c{result}|n: dice rolled[|c{die1}|n, |c{die2}|n] {pm}{attr}[|c{attrdm}|n]{crit}"
 
             if args not in ['str', 'dex', 'end', 'int', 'edu', 'soc']:
                 self.caller.msg("Attribute is invalid. Select from: str, dex, end, int, edu, soc.")
                 return
 
             dice = [die(1, 6), die(1, 6)]
+
+            crit = ""
+            if dice[0] == dice[1] == 1:
+                crit = " (|rsnake eyes!|n)"
+
+            elif dice[0] == dice[1] == 6:
+                crit = " (|gbox cars!|n)"
 
             attr = args
             attrdm = dm_attr(self.caller.db.attrs[args]['current'])
@@ -56,14 +63,23 @@ class CmdPerform(Command):
                 pm = "- "
 
 
-            string = string.format(result=dice[0] + dice[1] + attrdm, die1=dice[0], die2=dice[1], pm=pm, attr=attr, attrdm=attrdm)
+            string = string.format(
+                result=dice[0] + dice[1] + attrdm,
+                die1=dice[0],
+                die2=dice[1],
+                pm=pm,
+                attr=attr,
+                attrdm=attrdm,
+                crit=crit
+                )
+
             self.caller.msg(string)
             return
 
 
         elif re.match(regexp2, args):  # checking for something like 'perform broker + int', or 'perform pilot(spacecraft) + dex'
             m = re.match(regexp2, args)
-            string = "You rolled a |c{result}|n: dice rolled[|c{die1}|n, |c{die2}|n] {pm1}{skillname}[|c{skilldm}|n] {pm2}{attr}[|c{attrdm}|n]"
+            string = "You rolled a |c{result}|n: dice rolled[|c{die1}|n, |c{die2}|n] {pm1}{skillname}[|c{skilldm}|n] {pm2}{attr}[|c{attrdm}|n]{crit}"
             skillname, attr = m.groups()
 
             if attr not in ['str', 'dex', 'end', 'int', 'edu', 'soc']:
@@ -71,6 +87,13 @@ class CmdPerform(Command):
                 return
 
             dice = [die(1, 6), die(1, 6)]
+
+            crit = ""
+            if dice[0] == dice[1] == 1:
+                crit = " (|rsnake eyes!|n)"
+
+            elif dice[0] == dice[1] == 6:
+                crit = " (|gbox cars!|n)"
 
             skills = []
 
@@ -116,6 +139,7 @@ class CmdPerform(Command):
                 attrdm=attrdm,
                 skillname=skill,
                 skilldm=skillrank,
+                crit=crit,
                 )
 
             self.caller.msg(string)
