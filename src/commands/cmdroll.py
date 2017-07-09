@@ -60,25 +60,19 @@ class CmdRoll(Command):
 
         result += dm
 
-        dice = '%s' % ' + '.join(rolls)
+        dice = '|c%s|n' % ' + '.join(rolls)
         strdm = ''
 
         if dm > 0:
-            strdm = ' + dm[%d]' % dm
+            strdm = ' + dm[|c%d|n]' % dm
 
         if dm == 0:
             strdm = ''
 
         if dm < 0:
-            strdm = ' - dm[%d]' % abs(dm)
+            strdm = ' - dm[|c%d|n]' % abs(dm)
 
         crit = ''
 
-        if result - dm == number:
-            crit = " (snake eyes!)"
-
-        elif result - dm == number * sides:
-            crit = " (box cars!)"
-
-        self.caller.msg("Your result is {result}: dice[{dice}]{dm}{crit}".format(result=result, dice=dice, dm=strdm, crit=crit))
+        self.caller.msg("Your result is |c{result}|n: dice[{dice}]{dm}{crit}".format(result=result, dice=dice, dm=strdm, crit=crit))
 
