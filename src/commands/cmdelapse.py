@@ -9,7 +9,7 @@ class CmdElapse(Command):
         "@elapse reset" will reset the date to "001-1105"."""
     key = "@elapse"
     aliases = ["elapse"]
-    locks = "cmd:all()"
+    locks = "cmd:perm(Wizards) or attr(gm, True)"
     help_category = "Gaming"
 
 
