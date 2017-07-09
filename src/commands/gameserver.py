@@ -6,3 +6,4 @@ from cmdinflict import *
 from cmdsheet import *
 from cmdskill import *
 from cmdperform import *
+from cmdelapse import *

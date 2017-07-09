@@ -63,6 +63,7 @@ class PlayerCmdSet(default_cmds.PlayerCmdSet):
         self.add(CmdSheet())
         self.add(CmdSkill())
         self.add(CmdPerform())
+        self.add(CmdElapse())
 
 
 class UnloggedinCmdSet(default_cmds.UnloggedinCmdSet):
