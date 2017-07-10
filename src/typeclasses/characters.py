@@ -52,6 +52,8 @@ class Character(DefaultCharacter):
             }
 
         self.db.credit = 0
+        self.db.cashlog_id = 1
+        self.db.cashlog = []
 
 
     def calculate(self):

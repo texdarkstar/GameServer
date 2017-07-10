@@ -2,6 +2,7 @@ import re
 from command import Command
 from random import randint as die
 from world.tables import *
+from typeclasses.characters import Character
 
 
 class CmdPerform(Command):
@@ -34,6 +35,27 @@ class CmdPerform(Command):
 
         regexp1 = r"^(\w+)$"
         regexp2 = r"^(.+) +?\+ +?(\w+)$"
+
+
+        _chars = [char for char in Character.objects.all() if char.player]  # getting a list of all connected characters
+        chars = []
+        privy_chars = []
+
+        for char in _chars:
+            if (char.player.check_permstring("Wizards") or char.db.gm):  # removing those that are not allowed to hear priviledged data, also removing self.caller
+                privy_chars.append(char)
+            else:
+                chars.append(char)
+
+
+        # removing duplicates of self.caller
+        for char in chars:
+            if char.id == self.caller.id:
+                chars.remove(char)
+
+        for char in privy_chars:
+            if char.id == self.caller.id:
+                privy_chars.remove(char)
 
 
         if re.match(regexp1, args):  # checking for something like 'perform str'
@@ -74,6 +96,12 @@ class CmdPerform(Command):
                 )
 
             self.caller.msg(string)
+            for char in privy_chars:
+                char.msg(string.replace("You", self.caller.key))
+
+            for char in chars:
+                char.msg("{who} rolled {attr}: |c{result}{crit}|n".format(who=self.caller.key, attr=attr, result=dice[0] + dice[1] + attrdm, crit=crit))
+
             return
 
 
@@ -143,6 +171,13 @@ class CmdPerform(Command):
                 )
 
             self.caller.msg(string)
+
+            for char in privy_chars:
+                char.msg(string.replace("You", self.caller.key))
+
+            for char in chars:
+                char.msg("{who} rolled {skillname} + {attr}: |c{result}{crit}|n".format(who=self.caller.key, skillname=skillname, attr=attr, result=dice[0] + dice[1] + attrdm + skillrank, crit=crit))
+
             return
 
         else:  # no matches, abort
