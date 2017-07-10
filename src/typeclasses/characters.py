@@ -51,6 +51,8 @@ class Character(DefaultCharacter):
             'torso': '',
             }
 
+        self.db.credit = 0
+
 
     def calculate(self):
         pass
