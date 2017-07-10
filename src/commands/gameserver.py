@@ -7,3 +7,6 @@ from cmdsheet import *
 from cmdskill import *
 from cmdperform import *
 from cmdelapse import *
+from cmdcashadd import *
+from cmdcashrem import *
+from cmdcashlog import *

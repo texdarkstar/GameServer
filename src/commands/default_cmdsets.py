@@ -37,6 +37,18 @@ class CharacterCmdSet(default_cmds.CharacterCmdSet):
         #
         self.add(CmdRoll())
         self.add(CmdSign())
+        self.add(CmdForce())
+        self.add(CmdAward())
+        self.add(CmdInflict())
+        self.add(CmdUninflict())
+        self.add(CmdElapse())
+
+        self.add(CmdSheet())
+        self.add(CmdSkill())
+        self.add(CmdPerform())
+        self.add(CmdCashadd())
+        self.add(CmdCashrem())
+        self.add(CmdCashlog())
 
 
 class PlayerCmdSet(default_cmds.PlayerCmdSet):
@@ -56,14 +68,6 @@ class PlayerCmdSet(default_cmds.PlayerCmdSet):
         #
         # any commands you add below will overload the default ones.
         #
-        self.add(CmdForce())
-        self.add(CmdAward())
-        self.add(CmdInflict())
-        self.add(CmdUninflict())
-        self.add(CmdSheet())
-        self.add(CmdSkill())
-        self.add(CmdPerform())
-        self.add(CmdElapse())
 
 
 class UnloggedinCmdSet(default_cmds.UnloggedinCmdSet):
