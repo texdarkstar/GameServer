@@ -56,3 +56,4 @@ class Character(DefaultCharacter):
 
     def calculate(self):
         pass
+
