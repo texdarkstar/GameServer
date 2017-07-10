@@ -15,7 +15,7 @@ class CmdElapse(Command):
 
     def func(self):
         obj = self.caller.search("#2", global_search=True)
-        chars = [char for char in Character.objects.all() if char.player and char.key != self.caller.key]
+        chars = [char for char in Character.objects.all() if char.player]
         days = 0
 
         try:
