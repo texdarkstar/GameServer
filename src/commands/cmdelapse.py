@@ -69,3 +69,4 @@ class CmdElapse(Command):
             char.msg("Time passes. It is now |w" + str(date) + "|n.")
 
         return
+
