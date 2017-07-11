@@ -23,3 +23,8 @@ This table has a few signatures on it. *coughcough read help sign *cough*.
 Looking at the bottom you see that quite a few people have signed it.
 # finally, signing the table
 sign table Texdarkstar was here.
+
+#  setting the date variables on #2
+@set #2/date_day = 1
+#
+@set #2/date_year = 1105
