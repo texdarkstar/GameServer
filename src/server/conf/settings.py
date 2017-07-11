@@ -43,6 +43,9 @@ COMMAND_PARSER = "commands.cmdparser.cmdparser"
 COMMAND_DEFAULT_CLASS = "commands.command.MuxCommand"
 TELNET_OOB_ENABLED = False
 
+MULTISESSION_MODE = 2
+MAX_NR_CHARACTERS = 25
+
 DEFAULT_CHANNELS = [
                   # public channel
                   {"key": "Chat",
