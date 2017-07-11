@@ -28,3 +28,5 @@ lock functions from evennia.locks.lockfuncs.
 #    """
 #    print "%s tried to access %s. Access denied." % (accessing_obj, accessed_obj)
 #    return False
+def accessed_attr(accessing_obj, accessed_obj, *args, **kwargs):
+    return 

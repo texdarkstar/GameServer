@@ -49,6 +49,7 @@ class CharacterCmdSet(default_cmds.CharacterCmdSet):
         self.add(CmdCashadd())
         self.add(CmdCashrem())
         self.add(CmdCashlog())
+        self.add(CmdHide())
 
 
 class PlayerCmdSet(default_cmds.PlayerCmdSet):
@@ -68,6 +69,7 @@ class PlayerCmdSet(default_cmds.PlayerCmdSet):
         #
         # any commands you add below will overload the default ones.
         #
+        self.add(CmdWho())
 
 
 class UnloggedinCmdSet(default_cmds.UnloggedinCmdSet):

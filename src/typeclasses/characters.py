@@ -54,6 +54,8 @@ class Character(DefaultCharacter):
         self.db.credit = 0
         self.db.cashlog_id = 1
         self.db.cashlog = []
+        self.locks.add("view: not objattr(invisible, True) or perm(Wizards)")
+        self.db.inivisible = False
 
 
     def calculate(self):

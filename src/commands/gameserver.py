@@ -10,3 +10,5 @@ from cmdelapse import *
 from cmdcashadd import *
 from cmdcashrem import *
 from cmdcashlog import *
+from cmdhide import *
+from cmdwho import *
