@@ -45,17 +45,16 @@ class Character(DefaultCharacter):
         self.db.skills = {}
         self.db.boon_dice = 0
         self.db.bane_dice = 0
-        self.db.config = {}
         self.db.gm = False
-        self.db.equipment = {
-            'torso': '',
-            }
-
         self.db.credit = 0
         self.db.cashlog_id = 1
         self.db.cashlog = []
         self.locks.add("view: not objattr(invisible, True) or perm(Wizards)")
         self.db.inivisible = False
+        self.db.worn_mass = 0.00
+        self.db.armor = None
+        self.db.weapon = None
+        self.db.armor_rating = 0
 
 
     def calculate(self):
