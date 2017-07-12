@@ -15,3 +15,4 @@ from cmdwho import *
 from cmdequip import *
 from cmdunequip import *
 from cmdeq import *
+from cmdconfig import *

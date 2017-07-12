@@ -91,7 +91,12 @@ class Player(DefaultPlayer):
      at_server_shutdown()
 
     """
-    pass
+    def at_player_creation(self):
+        self.db.config = {
+            "autospend": False,
+            "prompt": True,
+            }
+
 
 class Guest(DefaultGuest):
     """

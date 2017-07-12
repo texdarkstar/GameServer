@@ -53,6 +53,7 @@ class CharacterCmdSet(default_cmds.CharacterCmdSet):
         self.add(CmdUnequip())
         self.add(CmdEq())
         self.add(override.CmdInventory())
+        self.add(CmdConfig())
 
 
 class PlayerCmdSet(default_cmds.PlayerCmdSet):
