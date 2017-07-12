@@ -30,9 +30,12 @@ class CmdSheet(Command):
 
         elif arg == "skills":
             for skill in self.caller.db.skills.keys():
-                string += "{skill}: {rank}\n".format(skill=skill, rank=self.caller.db.skills[skill])
+                string += "{skill}: |c{rank}|n\n".format(skill=skill, rank=self.caller.db.skills[skill])
 
-            self.caller.msg(string)
+            if string:
+                self.caller.msg(string)
+            elif not string:
+                self.caller.msg("No skills currently set.")
 
         else:
             self.caller.msg("Unknown field '%s'." % arg)
