@@ -42,7 +42,6 @@ class CharacterCmdSet(default_cmds.CharacterCmdSet):
         self.add(CmdInflict())
         self.add(CmdUninflict())
         self.add(CmdElapse())
-
         self.add(CmdSheet())
         self.add(CmdSkill())
         self.add(CmdPerform())
@@ -50,6 +49,10 @@ class CharacterCmdSet(default_cmds.CharacterCmdSet):
         self.add(CmdCashrem())
         self.add(CmdCashlog())
         self.add(CmdHide())
+        self.add(CmdEquip())
+        self.add(CmdUnequip())
+        self.add(CmdEq())
+        self.add(override.CmdInventory())
 
 
 class PlayerCmdSet(default_cmds.PlayerCmdSet):
