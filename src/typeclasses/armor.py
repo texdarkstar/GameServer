@@ -1,10 +1,7 @@
-from wearable import Wearable
+from objects import Object
 
 
-class Armor(Wearable):
-    """Worn armor, provides armor protection to the slots it takes up."""
-
+class Armor(Object):
     def at_object_creation(self):
-        self.db.slots = []
         self.db.rating = 0
         self.db.mass = 0
