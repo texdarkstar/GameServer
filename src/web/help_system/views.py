@@ -6,12 +6,12 @@ from typeclasses.characters import Character
 from world.cull_colors import cull_colors as cull
 
 
+
 def index(request):
     """The 'index' view."""
     user = request.user
-
-    if not user.is_anonymous() and user.character:
-        character = user.character
+    if not user.is_anonymous() and user.db._playable_characters and user.character:
+        character = user.db._playable_characters[0]
     else:
         try:
             character = Character.objects.get(id=user.id)
