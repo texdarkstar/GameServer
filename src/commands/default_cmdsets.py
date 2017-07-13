@@ -76,6 +76,7 @@ class PlayerCmdSet(default_cmds.PlayerCmdSet):
         #
         self.add(CmdWho())
         self.add(override.CmdHelp())
+        self.add(CmdWhoami())
 
 
 class UnloggedinCmdSet(default_cmds.UnloggedinCmdSet):

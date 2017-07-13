@@ -16,3 +16,4 @@ from cmdequip import *
 from cmdunequip import *
 from cmdeq import *
 from cmdconfig import *
+from cmdwhoami import *
