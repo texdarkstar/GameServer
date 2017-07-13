@@ -31,15 +31,32 @@ class Command(BaseCommand):
 
     """
     def at_post_cmd(self):
-        default_prompt = "\n> \n\n"
+        """
+        This hook is called after the command has finished executing
+        (after self.func()).
+        """
+        default_prompt = "\n> "
         try:
-            if self.caller.db.prompt != None:
-                self.caller.msg(prompt=self.caller.db.prompt)
-            else:
-                raise Exception()
-        except:
-            self.caller.msg(prompt=default_prompt)
-
+            if self.caller.player.db.config["prompt"]:
+                try:
+                    if self.caller.db.prompt != None:
+                        self.caller.msg(prompt=self.caller.db.prompt)
+                    else:
+                        raise Exception()
+                except:
+                    self.caller.msg(prompt=default_prompt)
+        except AttributeError:
+            try:
+                if self.caller.player.db.config["prompt"]:
+                    try:
+                        if self.caller.db.prompt != None:
+                            self.caller.msg(prompt=self.caller.db.prompt)
+                        else:
+                            raise Exception()
+                    except:
+                        self.caller.msg(prompt=default_prompt)
+            except AttributeError:
+                pass
 
 #------------------------------------------------------------
 #
@@ -91,14 +108,28 @@ class MuxCommand(Command):
         This hook is called after the command has finished executing
         (after self.func()).
         """
-        default_prompt = "\n> \n\n"
+        default_prompt = "\n> "
         try:
-            if self.caller.db.prompt != None:
-                self.caller.msg(prompt=self.caller.db.prompt)
-            else:
-                raise Exception()
-        except:
-            self.caller.msg(prompt=default_prompt)
+            if self.caller.player.db.config["prompt"]:
+                try:
+                    if self.caller.db.prompt != None:
+                        self.caller.msg(prompt=self.caller.db.prompt)
+                    else:
+                        raise Exception()
+                except:
+                    self.caller.msg(prompt=default_prompt)
+        except AttributeError:
+            try:
+                if self.caller.player.db.config["prompt"]:
+                    try:
+                        if self.caller.db.prompt != None:
+                            self.caller.msg(prompt=self.caller.db.prompt)
+                        else:
+                            raise Exception()
+                    except:
+                        self.caller.msg(prompt=default_prompt)
+            except AttributeError:
+                pass
 
 
     def parse(self):

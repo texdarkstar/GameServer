@@ -54,6 +54,7 @@ class CharacterCmdSet(default_cmds.CharacterCmdSet):
         self.add(CmdEq())
         self.add(override.CmdInventory())
         self.add(CmdConfig())
+        self.add(override.CmdHelp())
 
 
 class PlayerCmdSet(default_cmds.PlayerCmdSet):
@@ -74,6 +75,7 @@ class PlayerCmdSet(default_cmds.PlayerCmdSet):
         # any commands you add below will overload the default ones.
         #
         self.add(CmdWho())
+        self.add(override.CmdHelp())
 
 
 class UnloggedinCmdSet(default_cmds.UnloggedinCmdSet):
