@@ -6,8 +6,8 @@ from typeclasses.characters import Character
 
 
 class CmdPerform(Command):
-    """Syntax: perform <skill> + <attribute>
-                perform <attribute>
+    """Syntax: perform <skill> + <attribute> [<boon>]
+                perform <attribute> [<boon>]
 
         Rolls a skill + attribute, or just rolls an attribute.
         2D6 plus your specified skill rank + an attribute dm.
@@ -16,6 +16,8 @@ class CmdPerform(Command):
             perform str
             perform broker + int
             perform pilot(spacecraft) + dex
+            perform int boon
+            perform gun combat(rifle) + dex boon
         """
     key = "perform"
     aliases = ["perf", "per"]
@@ -31,10 +33,14 @@ class CmdPerform(Command):
         pm = ""
         pm1 = ""
         pm2 = ""
+        use_boon = False
+        use_bane = self.caller.db.bane_dice > 0
+        boonbane_string = ""
         string = ""
 
-        regexp1 = r"^(\w+)$"
-        regexp2 = r"^(.+) +?\+ +?(\w+)$"
+        regexp1 = r"^(\w+)\s*?(\w+)?$"
+        regexp2 = r"^(.+)\s*?\+\s+?(\w+)\s?(\w+)?$"
+
 
 
         _chars = [char for char in Character.objects.all() if char.player]  # getting a list of all connected characters
@@ -58,15 +64,63 @@ class CmdPerform(Command):
                 privy_chars.remove(char)
 
 
-        if re.match(regexp1, args):  # checking for something like 'perform str'
-            m = re.match(regexp1, args)
-            string = "You rolled a |c{result}|n: dice rolled[|c{die1}|n, |c{die2}|n] {pm}{attr}[|c{attrdm}|n]{crit}"
+        if re.match(regexp1, args):  # checking for something like 'perform str', or 'perform int boon'
+            m = re.match(regexp1, args).groups()
+            string = "You rolled a |c{result}|n: dice_rolled[|c{die1}|n, |c{die2}|n] {pm}{attr}[|c{attrdm}|n]{crit}{boonbane}"
 
-            if args not in ['str', 'dex', 'end', 'int', 'edu', 'soc']:
+            attr = m[0]
+            if attr not in ['str', 'dex', 'end', 'int', 'edu', 'soc']:
                 self.caller.msg("Attribute is invalid. Select from: str, dex, end, int, edu, soc.")
                 return
 
+
             dice = [die(1, 6), die(1, 6)]
+
+            use_boon = self.caller.db.boon_dice > 0 and (str(m[1]).lower() == "boon" or self.caller.player.db.config["autospend"])
+
+            if use_boon:
+                self.caller.db.boon_dice -= 1
+                if self.caller.db.bane_dice > 0:
+                    self.caller.db.bane_dice -= 1
+                    use_boon = False
+                    use_bane = False
+
+            if use_boon:
+                boon = die(1, 6)
+                toss = "nothing"
+                for d in dice:
+                    if boon > d:
+                        toss = d
+
+                if toss != "nothing":
+                    strdie = str(dice.pop(dice.index(toss)))
+                else:
+                    strdie = toss
+
+                boonbane_string = "\n|gboon_rolled|n[|c{boon}|n], tossed |c{die}|n.".format(
+                    boon=str(boon),
+                    die=strdie
+                    )
+                dice.append(boon)
+
+            if use_bane:
+                self.caller.db.bane_dice -= 1
+                bane = die(1, 6)
+                toss = "nothing"
+                for d in dice:
+                    if bane < d:
+                        toss = d
+
+                if toss != "nothing":
+                    strdie = str(dice.pop(dice.index(toss)))
+                else:
+                    strdie = toss
+
+                boonbane_string = "\n|rbane_rolled|n[|c{bane}|n], tossed |c{die}|n.".format(
+                    bane=str(bane),
+                    die=strdie
+                    )
+                dice.append(bane)
 
             crit = ""
             if dice[0] == dice[1] == 1:
@@ -75,8 +129,7 @@ class CmdPerform(Command):
             elif dice[0] == dice[1] == 6:
                 crit = " (|gbox cars!|n)"
 
-            attr = args
-            attrdm = dm_attr(self.caller.db.attrs[args]['current'])
+            attrdm = dm_attr(self.caller.db.attrs[attr]['current'])
 
 
             if attrdm >= 0:
@@ -92,7 +145,8 @@ class CmdPerform(Command):
                 pm=pm,
                 attr=attr,
                 attrdm=attrdm,
-                crit=crit
+                crit=crit,
+                boonbane=boonbane_string,
                 )
 
             self.caller.msg(string)
@@ -105,16 +159,64 @@ class CmdPerform(Command):
             return
 
 
-        elif re.match(regexp2, args):  # checking for something like 'perform broker + int', or 'perform pilot(spacecraft) + dex'
-            m = re.match(regexp2, args)
-            string = "You rolled a |c{result}|n: dice rolled[|c{die1}|n, |c{die2}|n] {pm1}{skillname}[|c{skilldm}|n] {pm2}{attr}[|c{attrdm}|n]{crit}"
-            skillname, attr = m.groups()
+        elif re.match(regexp2, args):  # checking for something like 'perform broker + int', or 'perform pilot(spacecraft) + dex', or 'perform computers + int boon'
+            string = "You rolled a |c{result}|n: dice_rolled[|c{die1}|n, |c{die2}|n] {pm1}{skillname}[|c{skilldm}|n] {pm2}{attr}[|c{attrdm}|n]{crit}{boonbane}"
+            m = re.match(regexp2, args).groups()
+            skillname = m[0]
+            attr = m[1]
 
             if attr not in ['str', 'dex', 'end', 'int', 'edu', 'soc']:
                 self.caller.msg("Attribute is invalid. Select from: str, dex, end, int, edu, soc.")
                 return
 
             dice = [die(1, 6), die(1, 6)]
+
+            use_boon = self.caller.db.boon_dice > 0 and (str(m[2]).lower() == "boon" or self.caller.player.db.config["autospend"])
+
+            if use_boon:
+                self.caller.db.boon_dice -= 1
+                if self.caller.db.bane_dice > 0:
+                    self.caller.db.bane_dice -= 1
+                    use_boon = False
+                    use_bane = False
+
+            if use_boon:
+                boon = die(1, 6)
+                toss = "nothing"
+                for d in dice:
+                    if boon > d:
+                        toss = d
+
+                if toss != "nothing":
+                    strdie = str(dice.pop(dice.index(toss)))
+                else:
+                    strdie = toss
+
+                boonbane_string = "\n|gboon_rolled|n[|c{boon}|n], tossed |c{die}|n.".format(
+                    boon=str(boon),
+                    die=strdie
+                    )
+                dice.append(boon)
+
+            if use_bane:
+                self.caller.db.bane_dice -= 1
+                bane = die(1, 6)
+                toss = "nothing"
+                for d in dice:
+                    if bane < d:
+                        toss = d
+
+                if toss != "nothing":
+                    strdie = str(dice.pop(dice.index(toss)))
+                else:
+                    strdie = toss
+
+                boonbane_string = "\n|rbane_rolled|n[|c{bane}|n], tossed |c{die}|n.".format(
+                    bane=str(bane),
+                    die=strdie
+                    )
+                dice.append(bane)
+
 
             crit = ""
             if dice[0] == dice[1] == 1:
@@ -168,6 +270,7 @@ class CmdPerform(Command):
                 skillname=skill,
                 skilldm=skillrank,
                 crit=crit,
+                boonbane=boonbane_string,
                 )
 
             self.caller.msg(string)
@@ -183,7 +286,6 @@ class CmdPerform(Command):
         else:  # no matches, abort
             string += "Syntax: perform <skill> + <attribute>\n"
             string += "        perform <attribute>\n"
-            string += "        perform <skill> + <attribute> <+/-><dm>\n"
 
             self.caller.msg(string)
             return
