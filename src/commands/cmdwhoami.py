@@ -9,7 +9,7 @@ class CmdWhoami(Command):
     """
     key = "@whoami"
     aliases = ["whoami"]
-    locks = "cmd:all"
+    locks = "cmd:all()"
     help_category = "General"
 
 

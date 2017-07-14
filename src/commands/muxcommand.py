@@ -5,6 +5,7 @@ is also an Player/OOC version that makes sure caller is a Player object.
 
 from evennia.utils import utils
 from evennia.commands.command import Command
+from world.format_prompt import format_prompt
 
 # limit symbol import for API
 __all__ = ("MuxCommand", "MuxPlayerCommand")
@@ -43,27 +44,14 @@ class MuxCommand(Command):
         (after self.func()).
         """
         default_prompt = "\n> "
+        use_prompt = True
         try:
-            if self.caller.player.db.config["prompt"]:
-                try:
-                    if self.caller.db.prompt != None:
-                        self.caller.msg(prompt=self.caller.db.prompt)
-                    else:
-                        raise Exception()
-                except:
-                    self.caller.msg(prompt=default_prompt)
+            use_prompt = self.caller.player.db.config["prompt"]
         except AttributeError:
-            try:
-                if self.caller.player.db.config["prompt"]:
-                    try:
-                        if self.caller.db.prompt != None:
-                            self.caller.msg(prompt=self.caller.db.prompt)
-                        else:
-                            raise Exception()
-                    except:
-                        self.caller.msg(prompt=default_prompt)
-            except AttributeError:
-                pass
+            use_prompt = self.caller.db.config["prompt"]
+
+        if use_prompt:
+            self.caller.msg(prompt=format_prompt(self.caller.db.prompt or default_prompt, self.caller))
 
     def parse(self):
         """
@@ -235,24 +223,11 @@ class MuxPlayerCommand(MuxCommand):
         (after self.func()).
         """
         default_prompt = "\n> "
+        use_prompt = True
         try:
-            if self.caller.player.db.config["prompt"]:
-                try:
-                    if self.caller.db.prompt != None:
-                        self.caller.msg(prompt=self.caller.db.prompt)
-                    else:
-                        raise Exception()
-                except:
-                    self.caller.msg(prompt=default_prompt)
+            use_prompt = self.caller.player.db.config["prompt"]
         except AttributeError:
-            try:
-                if self.caller.player.db.config["prompt"]:
-                    try:
-                        if self.caller.db.prompt != None:
-                            self.caller.msg(prompt=self.caller.db.prompt)
-                        else:
-                            raise Exception()
-                    except:
-                        self.caller.msg(prompt=default_prompt)
-            except AttributeError:
-                pass
+            use_prompt = self.caller.db.config["prompt"]
+
+        if use_prompt:
+            self.caller.msg(prompt=format_prompt(self.caller.db.prompt or default_prompt, self.caller))

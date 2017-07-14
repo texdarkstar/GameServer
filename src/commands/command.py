@@ -7,6 +7,7 @@ Commands describe the input the player can do to the game.
 
 from evennia.utils import utils
 from evennia import Command as BaseCommand
+from world.format_prompt import format_prompt
 # from evennia import default_cmds
 
 
@@ -36,27 +37,15 @@ class Command(BaseCommand):
         (after self.func()).
         """
         default_prompt = "\n> "
+        use_prompt = True
         try:
-            if self.caller.player.db.config["prompt"]:
-                try:
-                    if self.caller.db.prompt != None:
-                        self.caller.msg(prompt=self.caller.db.prompt)
-                    else:
-                        raise Exception()
-                except:
-                    self.caller.msg(prompt=default_prompt)
+            use_prompt = self.caller.player.db.config["prompt"]
         except AttributeError:
-            try:
-                if self.caller.player.db.config["prompt"]:
-                    try:
-                        if self.caller.db.prompt != None:
-                            self.caller.msg(prompt=self.caller.db.prompt)
-                        else:
-                            raise Exception()
-                    except:
-                        self.caller.msg(prompt=default_prompt)
-            except AttributeError:
-                pass
+            use_prompt = self.caller.db.config["prompt"]
+
+        if use_prompt:
+            self.caller.msg(prompt=format_prompt(self.caller.db.prompt or default_prompt, self.caller))
+
 
 #------------------------------------------------------------
 #
@@ -109,27 +98,14 @@ class MuxCommand(Command):
         (after self.func()).
         """
         default_prompt = "\n> "
+        use_prompt = True
         try:
-            if self.caller.player.db.config["prompt"]:
-                try:
-                    if self.caller.db.prompt != None:
-                        self.caller.msg(prompt=self.caller.db.prompt)
-                    else:
-                        raise Exception()
-                except:
-                    self.caller.msg(prompt=default_prompt)
+            use_prompt = self.caller.player.db.config["prompt"]
         except AttributeError:
-            try:
-                if self.caller.player.db.config["prompt"]:
-                    try:
-                        if self.caller.db.prompt != None:
-                            self.caller.msg(prompt=self.caller.db.prompt)
-                        else:
-                            raise Exception()
-                    except:
-                        self.caller.msg(prompt=default_prompt)
-            except AttributeError:
-                pass
+            use_prompt = self.caller.db.config["prompt"]
+
+        if use_prompt:
+            self.caller.msg(prompt=format_prompt(self.caller.db.prompt or default_prompt, self.caller))
 
 
     def parse(self):
