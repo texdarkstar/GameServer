@@ -79,4 +79,4 @@ INSTALLED_APPS += (
 # log out all active web browsing sessions. Game web client sessions
 # may survive.
 SECRET_KEY = 'ergQzy-t$4U(|vxPh!<DST_ckmZ=G&"Yo+C.FRn/'
-DEBUG = True
+DEBUG = False
