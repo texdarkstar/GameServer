@@ -23,7 +23,7 @@ class CmdSheet(Command):
         if arg == "score":
             # string 
             for attr in self.caller.db.attrs.keys():
-                string += "{attr}: {current}/{max}\n".format(attr=attr, current=self.caller.db.attrs[attr]['current'], max=self.caller.db.attrs[attr]['base'])
+                string += "{attr}: |c{current}|n/|c{max}|n\n".format(attr=attr, current=self.caller.db.attrs[attr]['current'], max=self.caller.db.attrs[attr]['base'])
  
             self.caller.msg(string)
 
