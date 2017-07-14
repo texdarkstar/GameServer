@@ -41,7 +41,10 @@ class Command(BaseCommand):
         try:
             use_prompt = self.caller.player.db.config["prompt"]
         except AttributeError:
-            use_prompt = self.caller.db.config["prompt"]
+            try:
+                use_prompt = self.caller.db.config["prompt"]
+            except:
+                use_prompt = False
 
         if use_prompt:
             self.caller.msg(prompt=format_prompt(self.caller.db.prompt or default_prompt, self.caller))
@@ -102,7 +105,10 @@ class MuxCommand(Command):
         try:
             use_prompt = self.caller.player.db.config["prompt"]
         except AttributeError:
-            use_prompt = self.caller.db.config["prompt"]
+            try:
+                use_prompt = self.caller.db.config["prompt"]
+            except:
+                use_prompt = False
 
         if use_prompt:
             self.caller.msg(prompt=format_prompt(self.caller.db.prompt or default_prompt, self.caller))
