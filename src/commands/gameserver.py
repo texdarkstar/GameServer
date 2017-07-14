@@ -18,3 +18,4 @@ from cmdeq import *
 from cmdconfig import *
 from cmdwhoami import *
 from cmdprompt import *
+from cmdattr import *
