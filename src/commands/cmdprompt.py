@@ -31,7 +31,7 @@ class CmdPrompt(Command):
         args = self.args
 
         if args:
-            self.caller.db.prompt = "|/" + args.strip() + "|_"
+            self.caller.db.prompt = "|/" + args.strip() + "|/"
             self.caller.msg("Okay, prompt updated.")
             return
 
