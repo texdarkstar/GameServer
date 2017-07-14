@@ -66,7 +66,7 @@ class CmdAttr(Command):
             string = "{target}'s attribute score:\n".format(target=target.key)
 
             for attr in target.db.attrs.keys():
-                string += "{attr}: {current}/{max}\n".format(attr=attr, current=target.db.attrs[attr]['current'], max=target.db.attrs[attr]['base'])
+                string += "{attr}: |c{current}|n/|c{max}|n\n".format(attr=attr, current=target.db.attrs[attr]['current'], max=target.db.attrs[attr]['base'])
 
             self.caller.msg(string)
 
