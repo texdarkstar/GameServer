@@ -16,5 +16,8 @@ class CmdInventory(CmdInventory):
                     table.add_row("|C%s|n" % item.name, "(|gequipped|n)" if (item.dbref == self.caller.db.armor) else "")
                 elif utils.inherits_from(item, "typeclasses.weapon.Weapon"):
                     table.add_row("|C%s|n" % item.name, "(|gequipped|n)" if (item.dbref == self.caller.db.weapon)  else "")
+                else:
+                    table.add_row("|C%s|n" % item.name)
+
             string = "|wYou are carrying:\n%s" % table
         self.caller.msg(string)
