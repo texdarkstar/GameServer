@@ -5,6 +5,7 @@ class CmdPrompt(Command):
     """Syntax @prompt <new prompt>
 
     This command will change your prompt, and it can be used to display certain information with special variables.
+    The prompt saves to your Player object, so it is global across accounts.
 
     Hint, you can turn your prompt off completely by using |wconfig prompt|n if desired.
 
@@ -31,7 +32,7 @@ class CmdPrompt(Command):
         args = self.args
 
         if args:
-            self.caller.db.prompt = "|/" + args.strip() + "|/"
+            self.caller.player.db.prompt = "|/" + args.strip() + "|/"
             self.caller.msg("Okay, prompt updated.")
             return
 

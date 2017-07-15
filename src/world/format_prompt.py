@@ -1,21 +1,15 @@
 from evennia.utils import inherits_from
 
 
-def format_prompt(string, obj):
+def format_prompt(string, player):
     prompt_vars = {}
+    prompt_vars["$P"] = player.key
 
-    if inherits_from(obj, "typeclasses.players.Player"):
-        prompt_vars["$P"] = obj.key
-        try:
-            prompt_vars["$p"] = obj.puppet[0].key,
-        except IndexError:
-            prompt_vars["$p"] = "None"
+    try:
+        prompt_vars["$p"] = player.get_puppet(player.sessions.get()[0]).key
+    except:
+        prompt_vars["$p"] = "None"
 
-    elif inherits_from(obj, "typeclasses.characters.Character"):
-        prompt_vars = {
-            "$P": obj.player.key,
-            "$p": obj.key,
-            }
 
     for key in prompt_vars:
         try:

@@ -47,7 +47,10 @@ class Command(BaseCommand):
                 use_prompt = False
 
         if use_prompt:
-            self.caller.msg(prompt=format_prompt(self.caller.db.prompt or default_prompt, self.caller))
+            try:
+                self.caller.msg(prompt=format_prompt(self.caller.player.db.prompt or default_prompt, self.caller.player))
+            except AttributeError:
+                self.caller.msg(prompt=format_prompt(self.caller.db.prompt or default_prompt, self.caller))
 
 
 #------------------------------------------------------------
@@ -111,7 +114,10 @@ class MuxCommand(Command):
                 use_prompt = False
 
         if use_prompt:
-            self.caller.msg(prompt=format_prompt(self.caller.db.prompt or default_prompt, self.caller))
+            try:
+                self.caller.msg(prompt=format_prompt(self.caller.player.db.prompt or default_prompt, self.caller.player))
+            except AttributeError:
+                self.caller.msg(prompt=format_prompt(self.caller.db.prompt or default_prompt, self.caller))
 
 
     def parse(self):

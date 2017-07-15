@@ -53,9 +53,7 @@ class CharacterCmdSet(default_cmds.CharacterCmdSet):
         self.add(CmdUnequip())
         self.add(CmdEq())
         self.add(override.CmdInventory())
-        self.add(CmdConfig())
         self.add(override.CmdHelp())
-        self.add(CmdPrompt())
         self.add(CmdAttr())
         self.add(CmdCombat())
 
@@ -80,6 +78,8 @@ class PlayerCmdSet(default_cmds.PlayerCmdSet):
         self.add(CmdWho())
         self.add(override.CmdHelp())
         self.add(CmdWhoami())
+        self.add(CmdConfig())
+        self.add(CmdPrompt())
 
 
 class UnloggedinCmdSet(default_cmds.UnloggedinCmdSet):

@@ -54,7 +54,10 @@ class MuxCommand(Command):
                 use_prompt = False
 
         if use_prompt:
-            self.caller.msg(prompt=format_prompt(self.caller.db.prompt or default_prompt, self.caller))
+            try:
+                self.caller.msg(prompt=format_prompt(self.caller.player.db.prompt or default_prompt, self.caller.player))
+            except AttributeError:
+                self.caller.msg(prompt=format_prompt(self.caller.db.prompt or default_prompt, self.caller))
 
     def parse(self):
         """
@@ -230,9 +233,13 @@ class MuxPlayerCommand(MuxCommand):
         try:
             use_prompt = self.caller.player.db.config["prompt"]
         except AttributeError:
-            use_prompt = self.caller.db.config["prompt"]
-        except:  # this occurs is the user is unloggedin
-            use_prompt = False
+            try:
+                use_prompt = self.caller.db.config["prompt"]
+            except:
+                use_prompt = False
 
         if use_prompt:
-            self.caller.msg(prompt=format_prompt(self.caller.db.prompt or default_prompt, self.caller))
+            try:
+                self.caller.msg(prompt=format_prompt(self.caller.player.db.prompt or default_prompt, self.caller.player))
+            except AttributeError:
+                self.caller.msg(prompt=format_prompt(self.caller.db.prompt or default_prompt, self.caller))
