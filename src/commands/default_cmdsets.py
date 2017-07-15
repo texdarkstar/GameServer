@@ -57,6 +57,7 @@ class CharacterCmdSet(default_cmds.CharacterCmdSet):
         self.add(override.CmdHelp())
         self.add(CmdPrompt())
         self.add(CmdAttr())
+        self.add(CmdCombat())
 
 
 class PlayerCmdSet(default_cmds.PlayerCmdSet):
