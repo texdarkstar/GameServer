@@ -1,5 +1,5 @@
 from command import Command
-from evennia.utils import inherits_from
+from evennia.utils import inherits_from, evtable
 
 
 class CmdCombat(Command):
@@ -9,8 +9,10 @@ class CmdCombat(Command):
         join the combat in the room (if join),
         or leave the combat in the room (if leave).
 
+        If no args, then this will show you who all is in the current combat.
+
         Only Wizards+ and gms and use 'start', 'stop', and 'begin',
-        Anyone can use 'join', and 'leave', however.
+        Anyone can use 'join' and 'leave', however.
     """
     key = "@combat"
     aliases = ["combat"]
@@ -23,8 +25,44 @@ class CmdCombat(Command):
         room = self.caller.location
 
         if not arg:
-            self.caller.msg("Syntax: @combat <start/stop/join/leave")
-            return
+            # self.caller.msg("Syntax: @combat <start/stop/join/leave")
+            scripts = room.scripts.all()
+            for script in scripts:
+                if inherits_from(script, "typeclasses.combathandler.CombatHandler"):
+                    break
+
+            try:
+                if not script.is_active and not script.db.running:
+                    characters = [char for char in script.db.characters.keys()]
+                    string = "Currently in combat:\n"
+                    if len(characters) > 0:
+                        for char in characters:
+                            string += "|_|_|_|_" + char + "\n"
+
+                    elif len(characters) == 0:
+                        string += "|_|_|_|_No one."
+
+                    self.caller.msg(string)
+                    return
+
+                elif script.db.running:
+                    table = evtable.EvTable("Who", "Inititive", "Turn Player")
+                    characters = [char for char in script.db.characters.keys()]
+                    for char in characters:
+                        obj = self.caller.search(char, global_search=True)
+                        table.add_row(
+                            "|c" + char + "|n",
+                            "|c" + str(script.db.inititive_board[char]) if not obj.db.hide_init else "|rXX"+ "|n",
+                            "|rYes|n" if (obj.key == script.db.turn_player) else "|gNo|n",
+                            )
+
+                    self.caller.msg(table)
+                    return
+
+            except UnboundLocalError:
+                self.caller.msg("There isn't a combat running!")
+                return
+
 
         elif arg == "start" and (self.caller.check_permstring("Wizards") or self.caller.db.gm):
             scripts = room.scripts.all()
@@ -34,7 +72,7 @@ class CmdCombat(Command):
                     return
 
             room.msg_contents("{who} starts a combat.".format(who=self.caller.key))
-            room.scripts.add("typeclasses.combathandler.CombatHandler")
+            room.scripts.add("typeclasses.combathandler.CombatHandler", autostart=False)
             return
 
 
@@ -64,8 +102,8 @@ class CmdCombat(Command):
                 self.caller.msg("There isn't a combat running!")
                 return
 
-            self.caller.msg("Okay, joined the combat.")
-            room.msg_contents("{who} joined the combat.".format(who=self.caller.key), exclude=self.caller)
+            room.msg_contents("{who} joined the combat.".format(who=self.caller.key))
+
 
         elif arg == "leave":
             scripts = room.scripts.all()
@@ -82,8 +120,8 @@ class CmdCombat(Command):
                 self.caller.msg("There isn't a combat running!")
                 return
 
-            self.caller.msg("Okay, left the combat.")
-            room.msg_contents("{who} left the combat.".format(who=self.caller.key), exclude=self.caller)
+            room.msg_contents("{who} left the combat.".format(who=self.caller.key))
+
 
         elif arg == "begin" and (self.caller.check_permstring("Wizards") or self.caller.db.gm):
             scripts = room.scripts.all()
@@ -95,13 +133,15 @@ class CmdCombat(Command):
                 if script.is_active:
                     self.caller.msg("Combat is already running!")
                     return
-                script.start()
+                elif len(script.db.characters.keys()) < 2:
+                    self.caller.msg("Need at least two characters to begin!")
+                    return
             except UnboundLocalError:
                 self.caller.msg("There isn't a combat to begin!")
                 return
 
-            self.caller.msg("Okay, began the combat.")
             room.msg_contents("{who} begins the combat.".format(who=self.caller.key))
+            script.start()
 
         else:
             self.caller.msg("Unknown argument '{arg}'.".format(arg=arg))

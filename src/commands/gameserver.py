@@ -20,3 +20,4 @@ from cmdwhoami import *
 from cmdprompt import *
 from cmdattr import *
 from cmdcombat import *
+from cmddone import *
