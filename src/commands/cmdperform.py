@@ -165,6 +165,10 @@ class CmdPerform(Command):
             skillname = m[0]
             attr = m[1]
 
+            if skillname.strip() == "jack of all trades":
+                self.caller.msg("You can't roll jack of all trades.")
+                return
+
             if attr not in ['str', 'dex', 'end', 'int', 'edu', 'soc']:
                 self.caller.msg("Attribute is invalid. Select from: str, dex, end, int, edu, soc.")
                 return
@@ -223,7 +227,7 @@ class CmdPerform(Command):
                 crit = " (|rsnake eyes!|n)"
 
             elif dice[0] == dice[1] == 6:
-                crit = " (|gbox cars!|n)"
+                crit = "(|gbox cars!|n)"
 
             skills = []
 
@@ -234,6 +238,13 @@ class CmdPerform(Command):
             if len(skills) == 0:
                 skillrank = -3
                 skill = skillname + "[|runskilled|n]"
+
+                if "jack of all trades" in self.caller.db.skills.keys():
+                    rank = self.caller.db.skills["jack of all trades"]
+                    skillrank = -3 + rank
+
+                    if skillrank == 0:
+                        skillrank = 0
 
             elif len(skills) > 1:
                 string = "There were multiple matches for '%s': %s." % (skillname, ', '.join(skills))
@@ -258,7 +269,6 @@ class CmdPerform(Command):
             elif skillrank < 0:
                 pm1 = "- "
 
-
             string = string.format(
                 result=dice[0] + dice[1] + attrdm + skillrank,
                 die1=dice[0],
@@ -281,11 +291,18 @@ class CmdPerform(Command):
             for char in chars:
                 char.msg("{who} rolled {skillname} + {attr}: |c{result}{crit}|n".format(who=self.caller.key, skillname=skillname, attr=attr, result=dice[0] + dice[1] + attrdm + skillrank, crit=crit))
 
+            if "jack of all trades" in self.caller.db.skills.keys():
+                rank = self.caller.db.skills["jack of all trades"]
+                self.caller.msg("(Deducted |c%s|n for having jack of trades at rank |c%s|n)" % (rank, rank))
+
+                for char in privy_chars:
+                    char.msg("(Deducted |c%s|n for having jack of trades at rank |c%s|n)" % (rank, rank))
+
             return
 
         else:  # no matches, abort
-            string += "Syntax: perform <skill> + <attribute>\n"
-            string += "        perform <attribute>\n"
+            string += "Syntax: perform <skill> + <attribute> [<boon>]\n"
+            string += "        perform <attribute> [<boon>]\n"
 
             self.caller.msg(string)
             return
