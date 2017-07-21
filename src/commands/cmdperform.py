@@ -224,7 +224,7 @@ class CmdPerform(Command):
 
             crit = ""
             if dice[0] == dice[1] == 1:
-                crit = " (|rsnake eyes!|n)"
+                crit = "(|rsnake eyes!|n)"
 
             elif dice[0] == dice[1] == 6:
                 crit = "(|gbox cars!|n)"
