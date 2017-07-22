@@ -11,7 +11,6 @@ from cmdcashadd import *
 from cmdcashrem import *
 from cmdcashlog import *
 from cmdhide import *
-from cmdwho import *
 from cmdequip import *
 from cmdunequip import *
 from cmdeq import *
@@ -21,3 +20,4 @@ from cmdprompt import *
 from cmdattr import *
 from cmdcombat import *
 from cmddone import *
+from cmdmsp import *
